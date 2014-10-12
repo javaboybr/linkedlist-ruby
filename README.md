@@ -1,6 +1,6 @@
-# Linkedlist
+# LinkedList
 
-TODO: Write a gem description
+Simple implementation of doubly linked list data type in ruby
 
 ## Installation
 
@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+list = LinkedList.new
+#adding some data, it could be whatever you want
+list << "a string" << 1 << nil << false << Time.new
+#it can be a stack, adding at the top
+list.push "top of the stack"
+#removing from the top
+list.pop
+#it can be a queue, adding at the end
+list.enq "Last in"
+#removing the first
+list.deq
+```
 
 ## Contributing
 
