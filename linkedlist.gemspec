@@ -6,11 +6,12 @@ require 'linkedlist/version'
 Gem::Specification.new do |spec|
   spec.name          = "linkedlist"
   spec.version       = Linkedlist::VERSION
-  spec.authors       = ["javaboybr"]
+  spec.authors       = ["Thiago Gonzaga"]
   spec.email         = ["thi_gonzaga@yahoo.com.br"]
   spec.summary       = %q{An iterable doubly linked list}
   spec.description   = %q{An iterable doubly linked list which can be used as a stack, queue or array list}
   spec.homepage      = "https://github.com/javaboybr/linkedlist-ruby"
+  spec.metadata      = { "issue_tracker" => "https://github.com/javaboybr/linkedlist-ruby/issues"}
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
