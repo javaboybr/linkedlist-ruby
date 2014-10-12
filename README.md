@@ -28,7 +28,7 @@ list << "a string" << 1 << nil << false << Time.new
 list.push "top of the stack"
 #removing from the top
 list.pop
-#it can be a queue, adding at the end
+#it can be a queue, adding on end
 list.enq "Last in"
 #removing the first
 list.deq
