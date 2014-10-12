@@ -1,15 +1,15 @@
 require "linkedlist/version"
 require "node"
 
-#Uma implementação simples e didatica de uma lista duplamente encadeada.
+#A simple implementation of doubly linked list data type
 #
 #Autor:: Thiago Gonzaga
-#Licença:: MIT
+#License:: MIT
 class LinkedList
 
-	#Inicializa uma nova lista podendo conter
-	# * tamanho
-	# * dado inicial
+	#Creates a new instance of a list
+	# * length
+	# * initial data
 	def initialize(length=0, item=nil)
 		@tail = nil
 		@head = nil
@@ -25,34 +25,34 @@ class LinkedList
 		@length
 	end
 
-	#Alias para length
+	#Alias for length
 	#alias:: length()
 	def size
 		@length
 	end
 
-	#insere um item no final da lista
+	#Insert data on end
 	#alias:: add()
 	def push(info)
 		add(info)
 	end
 
-	#remove um item do final da lista
+	#remove the last item
 	def pop
 		remove(@length - 1)
 	end
 
-	#enfileira um item, ou seja, insere no final da fila
+	#enqueue an item on end
 	def enq(info)
 		add(info)
 	end
 
-	#desenfileira um item, ou seja, remove do inicio da fila
+	#dequeue the first item
 	def deq
 		remove(0)
 	end
 
-	#insere um item no final da lista
+	#insert an item on end
 	def add(info)
 		_new = Node.new(info, previous: @tail)
 		if @head == nil
@@ -66,13 +66,13 @@ class LinkedList
 		self
 	end
 
-	#recupera um item de um determinado indice, iniciando por 0
+	#get data from it index starting at 0
 	def get(index)
 		dir = index > @length/2? -1: 1
 		go(dir: dir, index: index)
 	end
 
-	#remove um item contido num determinado indice
+	#remove date by it index
 	def remove(index)
 		dir = index > @length/2? -1: 1
 		curr = go(dir: dir, index: index)
@@ -87,16 +87,17 @@ class LinkedList
 		curr.info if curr != nil
 	end
 
-	#retorna primeiro item da lista
+	#the first item of the list
 	def first
 		@head.info
 	end
 
-	#retorna o ultimo item da lista
+	#the last item of the list
 	def last
 		@tail.info
 	end
 
+	#go forward
 	def each
 		curr = @head
 		while curr != nil
@@ -105,6 +106,7 @@ class LinkedList
 		end
 	end
 
+	#go backwards
 	def reverse_each
 		curr = @tail
 		while curr != nil
@@ -113,6 +115,7 @@ class LinkedList
 		end
 	end
 
+	#Convert to a string
 	def to_s
 		s = "["
 		curr = @head
@@ -123,18 +126,19 @@ class LinkedList
 		s << "]"
 	end
 
+	#Convert to an array
 	def to_a
 		arr = []
 		each {|valor| arr << valor}
 		arr
 	end
 
-	#verifica se a lista está vazia
+	#verify if the list is empty
 	def empty?
 		@length == 0
 	end
 
-	#remove todos os itens da lista
+	#remove all itens
 	def clear
 		@length = 0
 		@next = nil
@@ -156,7 +160,7 @@ class LinkedList
 		add(info)
 	end
 
-	#percorre a lista
+	#go through the list back and fourth
 	private
 	def go(dir: 1, index: nil)
 		curr, i = @head, 0 if dir == 1

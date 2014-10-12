@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["thi_gonzaga@yahoo.com.br"]
   spec.summary       = %q{An iterable doubly linked list}
   spec.description   = %q{An iterable doubly linked list which can be used as a stack, queue or array list}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/javaboybr/linkedlist-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
