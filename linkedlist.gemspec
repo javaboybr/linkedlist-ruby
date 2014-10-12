@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Linkedlist::VERSION
   spec.authors       = ["javaboybr"]
   spec.email         = ["thi_gonzaga@yahoo.com.br"]
-  spec.summary       = %q{iterable double linked list}
-  spec.description   = %q{A iterable list which can be used as a stack, queue or array list}
+  spec.summary       = %q{An iterable doubly linked list}
+  spec.description   = %q{An iterable doubly linked list which can be used as a stack, queue or array list}
   spec.homepage      = ""
   spec.license       = "MIT"
 
