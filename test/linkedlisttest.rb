@@ -59,4 +59,10 @@ class LinkedListTest < Test::Unit::TestCase
 		assert_equal list.length, 16
 		@log.info "List #{list}"
 	end
+
+	def test_nil
+		list = LinkedList.new
+		assert_nil list.first
+		assert_nil list.last
+	end
 end

@@ -20,7 +20,7 @@ class LinkedList
 		end
 	end
 
-	#retorna o tamanho da lista
+	#list length
 	def length
 		@length
 	end
@@ -108,12 +108,12 @@ class LinkedList
 
 	#the first item of the list
 	def first
-		@head.info
+		@head.info if !@head.nil?
 	end
 
 	#the last item of the list
 	def last
-		@tail.info
+		@tail.info if !@tail.nil?
 	end
 
 	#go forward
