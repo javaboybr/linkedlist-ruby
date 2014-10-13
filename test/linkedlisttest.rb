@@ -42,4 +42,21 @@ class LinkedListTest < Test::Unit::TestCase
 		assert_equal list.remove(1), "string"
 		@log.info "Removed \"string\" List #{list}"
 	end
+
+	def test_insert_at
+		list = LinkedList.new << 1 << 2 << "string" << false << true << nil
+		assert_not_nil list.insert_at(0, -1)
+		@log.info "List #{list}"
+		assert_equal list[0], -1
+		assert_equal list[1], 1
+		assert_not_nil list.insert_at(3, -1)
+		assert_equal list[3], -1
+		assert_equal list[4], "string"
+		assert_not_nil list.insert_at(8, -1)
+		assert_nil list[7]
+		assert_equal list[8], -1
+		assert_not_nil list.insert_at(15, -1)
+		assert_equal list.length, 16
+		@log.info "List #{list}"
+	end
 end

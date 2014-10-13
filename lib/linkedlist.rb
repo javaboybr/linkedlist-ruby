@@ -55,7 +55,7 @@ class LinkedList
 	#insert an item on end
 	def add(info)
 		_new = Node.new(info, previous: @tail)
-		if @head == nil
+		if @head.nil?
 			@head = _new
 			@tail = @head
 		else
@@ -63,6 +63,25 @@ class LinkedList
 			@tail = _new
 		end
 		@length += 1
+		self
+	end
+
+	#insert at a certain position
+	def insert_at(index, info)
+		curr = get(index)
+		if !curr.nil?
+			_new = Node.new(info, previous: curr.previous, _next: curr)
+			curr.previous.next = _new if !curr.previous.nil?
+			curr.previous = _new
+			@head =  _new if @head == curr
+			@tail = _new if @tail == curr
+			@length += 1
+		else
+			for i in (@length...index)
+				self << nil
+			end
+			add(info)
+		end
 		self
 	end
 
@@ -76,7 +95,7 @@ class LinkedList
 	def remove(index)
 		dir = index > @length/2? -1: 1
 		curr = go(dir: dir, index: index)
-		if curr != nil
+		if !curr.nil?
 			curr.previous.next = curr.next if !curr.previous.nil?
 			curr.next.previous = curr.previous if !curr.next.nil?
 			@tail = curr.previous if curr == @tail
@@ -84,7 +103,7 @@ class LinkedList
 			curr.previous, curr.next = nil, nil
 			@length -= 1
 		end
-		curr.info if curr != nil
+		curr.info if !curr.nil?
 	end
 
 	#the first item of the list
@@ -100,7 +119,7 @@ class LinkedList
 	#go forward
 	def each
 		curr = @head
-		while curr != nil
+		while !curr.nil?
 			yield(curr.info) if block_given?
 			curr = curr.next
 		end
@@ -109,7 +128,7 @@ class LinkedList
 	#go backwards
 	def reverse_each
 		curr = @tail
-		while curr != nil
+		while !curr.nil?
 			yield(curr.info) if block_given?
 			curr = curr.previous
 		end
@@ -119,7 +138,7 @@ class LinkedList
 	def to_s
 		s = "["
 		curr = @head
-		while curr != nil
+		while !curr.nil?
 			s << curr.to_s
 			curr = curr.next
 		end
@@ -148,12 +167,17 @@ class LinkedList
 
 	def [](index)
 		i = get(index)
-		i.info if i != nil
+		i.info if !i.nil?
 	end
 
-	def []=(index, value)
+	def []=(index, info)
 		i = get(index)
-		i.info = value if i != nil
+		if !i.nil?
+			i.info = info
+		else
+			insert_at(index, info)
+		end
+		info
 	end
 
 	def <<(info)
@@ -165,7 +189,7 @@ class LinkedList
 	def go(dir: 1, index: nil)
 		curr, i = @head, 0 if dir == 1
 		curr, i = @tail, (@length-1) if dir == -1
-		while curr != nil
+		while !curr.nil?
 			break if i == index
 			curr = curr.next if dir == 1
 			curr = curr.previous if dir == -1

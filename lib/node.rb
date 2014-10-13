@@ -2,7 +2,7 @@ class Node
 
 	attr_accessor :info, :next, :previous
 
-	def initialize(info, _next: nil, previous: nil)
+	def initialize(info, previous: nil, _next: nil)
 		@info = info
 		@next = _next
 		@previous = previous
