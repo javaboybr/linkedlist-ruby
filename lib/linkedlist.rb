@@ -160,8 +160,10 @@ class LinkedList
 	#remove all itens
 	def clear
 		@length = 0
-		@next = nil
-		@previous = nil
+		@head.next.previous = nil if !@head.next.nil?
+		@tail.previous.next = nil if !@head.previous.nil?
+		@head = nil
+		@tail = nil
 		self
 	end
 
